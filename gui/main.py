@@ -14,15 +14,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(912, 504)
-
-        self.hacking = 1
-
+        Dialog.resize(1395, 737)
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(250, 460, 181, 27))
+        self.pushButton.setGeometry(QtCore.QRect(470, 690, 181, 27))
         self.pushButton.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(440, 460, 181, 27))
+        self.pushButton_2.setGeometry(QtCore.QRect(670, 690, 181, 27))
         self.pushButton_2.setObjectName("pushButton_2")
         self.plainTextEdit = QtWidgets.QPlainTextEdit(Dialog)
         self.plainTextEdit.setGeometry(QtCore.QRect(100, 30, 141, 31))
@@ -31,9 +28,9 @@ class Ui_Dialog(object):
         self.label.setGeometry(QtCore.QRect(40, 30, 51, 19))
         self.label.setObjectName("label")
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
-        self.tableWidget.setGeometry(QtCore.QRect(30, 70, 841, 381))
+        self.tableWidget.setGeometry(QtCore.QRect(30, 70, 1351, 601))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(3)
+        self.tableWidget.setColumnCount(6)
         self.tableWidget.setRowCount(0)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
@@ -41,22 +38,16 @@ class Ui_Dialog(object):
         self.tableWidget.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
-
-
-        self.tableWidget.setColumnWidth(0, 300)
-        self.tableWidget.setColumnWidth(1, 300)
-        self.tableWidget.setColumnWidth(2, 238)
-
-
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(5, item)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
-    def load_data(self):
-        self.tableWidget.setRowCount(1)
-        self.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem(str(self.hacking)))
-        self.hacking+=1
-        # self.tableWidget.resiz
-        print("SUCCESS")
+
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
@@ -65,13 +56,18 @@ class Ui_Dialog(object):
         self.plainTextEdit.setPlainText(_translate("Dialog", "8888"))
         self.label.setText(_translate("Dialog", "PORT"))
         item = self.tableWidget.horizontalHeaderItem(0)
-        item.setText(_translate("Dialog", "SOURCE"))
+        item.setText(_translate("Dialog", "pretty_host"))
         item = self.tableWidget.horizontalHeaderItem(1)
-        item.setText(_translate("Dialog", "DES"))
+        item.setText(_translate("Dialog", "method"))
         item = self.tableWidget.horizontalHeaderItem(2)
-        item.setText(_translate("Dialog", "METHOD"))
+        item.setText(_translate("Dialog", "url"))
+        item = self.tableWidget.horizontalHeaderItem(3)
+        item.setText(_translate("Dialog", "address"))
+        item = self.tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("Dialog", "http_version"))
+        item = self.tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("Dialog", "status_code"))
 
-        self.pushButton.clicked.connect(self.load_data)
 
 if __name__ == "__main__":
     import sys

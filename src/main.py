@@ -8,7 +8,6 @@ import json
 
 HOST = '192.168.56.1'  # Địa chỉ IP của server
 PORT = 9999         # Cổng mà server socket lắng nghe
-array_all_connect=[]
 array_Data_Proxy=[]
 
 
@@ -27,15 +26,6 @@ class DataProxy:
         print(f"[address] {self.address}")
         print(f"[http_version] {self.http_version}")
         print(f"[status_code] {self.status_code}")
-
-        file_path = "./log.txt"
-        with open(file_path, "a") as file:
-            file.write(self.pretty_host+" ")
-            file.write(self.method+" ")
-            file.write(self.url+" ")
-            file.write(self.address+" ")
-            file.write(self.http_version+" ")
-            file.write(self.status_code+"\n")
         
 
 class ProxyServerCustom:    
@@ -44,37 +34,21 @@ class ProxyServerCustom:
         self.ssl_bump_enabled = True
 
     def request(self, flow: http.HTTPFlow) -> None:
-        # Xử lý yêu cầu trước khi gửi đến máy chủ
-        # print(f"[HOST] {flow.request.pretty_host}")
-        # print(f"[METHOD]: {flow.request.method}")
-        # print(f"[URL]{flow.request.url}")
-        # print(f"[ADDRESS]{flow.client_conn.address}")
-        
-        array_Data_Proxy.append(str(flow.request.pretty_host))
-        array_Data_Proxy.append(str(flow.request.method))
-        array_Data_Proxy.append(str(flow.request.url))
-        array_Data_Proxy.append(str(flow.client_conn.address))
-
+        pass
 
     def response(self, flow: http.HTTPFlow) -> None:
-        # Xử lý phản hồi từ máy chủ trước khi gửi đến ứng dụng
-        # print(f"[SERVER TO CLIENT] {flow.response.headers}")
-
-        # ProxyServerCustom.array_host.append(flow.request.content.decode("utf-8"))
-        # print(f"[COOKIE] {flow.response.cookies}")
-        # print(f"[TEXT] {flow.response.text}")
-        array_Data_Proxy.append(str(flow.request.http_version))
-        array_Data_Proxy.append(str(flow.response.status_code))
 
         dataProxy = DataProxy(
-            array_Data_Proxy[0],
-            array_Data_Proxy[1],
-            array_Data_Proxy[2],
-            array_Data_Proxy[3],
-            array_Data_Proxy[4],
-            array_Data_Proxy[5]
+            str(flow.request.pretty_host),
+            str(flow.request.method),
+            str(flow.request.url),
+            str(flow.client_conn.address[0]),
+            str(flow.request.http_version),
+            str(flow.response.status_code)
         )
+        self.send_data(dataProxy)
         
+    def send_data(self,dataProxy):
         dataProxy.dispplay()    
         array_Data_Proxy.clear()
 
@@ -101,12 +75,7 @@ class ProxyServerCustom:
             # Đóng kết nối
             client_socket.close()
         except Exception as e:
-            print("ERROR",e)
-
-        # array_Data_Proxy.clear()
-        # connectdb = Connectdb()        
-
-
+            print("ERROR",e) 
 
 
 addons = [
