@@ -18,8 +18,29 @@ class DatabaseMysql:
         print(mycursor.rowcount, "record inserted.")
 
     def select_from_database(self):
-        sql = "SELECT address, method, pretty_host, url,status_code, http_version FROM User_In_Proxy ORDER BY id DESC LIMIT 100"
+        sql = "SELECT address, method, pretty_host, url,status_code, http_version FROM User_In_Proxy ORDER BY id DESC"
         mycursor = self.mydb.cursor()
         mycursor.execute(sql)
         myresult = mycursor.fetchall()
         return myresult
+    def delete_all(self):
+        sql = "DELETE FROM User_In_Proxy"
+        mycursor = self.mydb.cursor()
+        mycursor.execute(sql)
+        self.mydb.commit()
+        return True
+    def delete_where(self, query):
+        sql = "DELETE FROM User_In_Proxy WHERE address LIKE %s OR pretty_host LIKE %s"
+        mycursor = self.mydb.cursor()
+        pattern = '%' + query + '%'
+        mycursor.execute(sql, (pattern, pattern,))
+        self.mydb.commit()
+        # return True
+    def search(self,query):
+        sql = "SELECT address, method, pretty_host, url,status_code, http_version FROM User_In_Proxy  WHERE address LIKE %s OR pretty_host LIKE %s ORDER BY id DESC"
+        mycursor = self.mydb.cursor()
+        pattern = '%'+query+'%'
+        mycursor.execute(sql, (pattern,pattern,))
+        myresult = mycursor.fetchall()
+        return myresult
+    # def search_where_client_or_host

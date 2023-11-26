@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'gui/main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -16,17 +16,11 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.resize(1395, 737)
         self.pushButton = QtWidgets.QPushButton(Dialog)
-        self.pushButton.setGeometry(QtCore.QRect(470, 690, 181, 27))
+        self.pushButton.setGeometry(QtCore.QRect(310, 690, 181, 31))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(Dialog)
-        self.pushButton_2.setGeometry(QtCore.QRect(670, 690, 181, 27))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(Dialog)
-        self.plainTextEdit.setGeometry(QtCore.QRect(100, 30, 141, 31))
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(40, 30, 51, 19))
-        self.label.setObjectName("label")
+        self.pushButton_delete = QtWidgets.QPushButton(Dialog)
+        self.pushButton_delete.setGeometry(QtCore.QRect(500, 690, 181, 31))
+        self.pushButton_delete.setObjectName("pushButton_delete")
         self.tableWidget = QtWidgets.QTableWidget(Dialog)
         self.tableWidget.setGeometry(QtCore.QRect(30, 70, 1351, 601))
         self.tableWidget.setObjectName("tableWidget")
@@ -44,6 +38,19 @@ class Ui_Dialog(object):
         self.tableWidget.setHorizontalHeaderItem(4, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(5, item)
+        self.plainTextEdit = QtWidgets.QPlainTextEdit(Dialog)
+        self.plainTextEdit.setGeometry(QtCore.QRect(960, 10, 291, 31))
+        self.plainTextEdit.setPlainText("")
+        self.plainTextEdit.setObjectName("plainTextEdit")
+        self.pushButton_search = QtWidgets.QPushButton(Dialog)
+        self.pushButton_search.setGeometry(QtCore.QRect(880, 690, 181, 31))
+        self.pushButton_search.setObjectName("pushButton_search")
+        self.label = QtWidgets.QLabel(Dialog)
+        self.label.setGeometry(QtCore.QRect(840, 10, 111, 20))
+        self.label.setObjectName("label")
+        self.pushButton_delete_where = QtWidgets.QPushButton(Dialog)
+        self.pushButton_delete_where.setGeometry(QtCore.QRect(690, 690, 181, 31))
+        self.pushButton_delete_where.setObjectName("pushButton_delete_where")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -51,10 +58,8 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.pushButton.setText(_translate("Dialog", "START PROXY SERVER"))
-        self.pushButton_2.setText(_translate("Dialog", "STOP PROXY SERVER"))
-        self.plainTextEdit.setPlainText(_translate("Dialog", "8888"))
-        self.label.setText(_translate("Dialog", "PORT"))
+        self.pushButton.setText(_translate("Dialog", "UPDATE TABLE"))
+        self.pushButton_delete.setText(_translate("Dialog", "DELETE ALL"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Dialog", "pretty_host"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -67,6 +72,9 @@ class Ui_Dialog(object):
         item.setText(_translate("Dialog", "http_version"))
         item = self.tableWidget.horizontalHeaderItem(5)
         item.setText(_translate("Dialog", "status_code"))
+        self.pushButton_search.setText(_translate("Dialog", "Search"))
+        self.label.setText(_translate("Dialog", "Client Or Server"))
+        self.pushButton_delete_where.setText(_translate("Dialog", "DELETE Client Or Server"))
 
 
 if __name__ == "__main__":
