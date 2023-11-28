@@ -6,8 +6,8 @@ import socket
 import json
 
 
-HOST = '192.168.56.1'  # Địa chỉ IP của server
-PORT = 9999         # Cổng mà server socket lắng nghe
+# HOST = '192.168.56.1'  # Địa chỉ IP của server
+# PORT = 9999         # Cổng mà server socket lắng nghe
 array_Data_Proxy=[]
 
 
