@@ -7,6 +7,10 @@
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
+CREATE Database ProjecPython;
+
+USE ProjecPython;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
